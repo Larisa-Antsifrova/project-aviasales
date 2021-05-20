@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { ticketsReducer } from './tickets/tickets-reducers';
 import { filtersReducer } from './filters/filters-reducers';
 import { sortingReducer } from './sorting/sorting-reducers';
+import { batchReducer } from './batch/batch-reducers';
 
 // Creating and configuring application store
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     tickets: ticketsReducer,
     filters: filtersReducer,
     sorted: sortingReducer,
+    batch: batchReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });
