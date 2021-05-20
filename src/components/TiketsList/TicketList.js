@@ -8,13 +8,13 @@ import { getSortedTickets } from '../../redux/sorting/sorting-selectors';
 import { useSelector } from 'react-redux';
 
 const TicketsList = () => {
-  const allFilteredTickets = useSelector(getSortedTickets);
+  const allSortedTickets = useSelector(getSortedTickets);
 
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    setState(allFilteredTickets);
-  }, [allFilteredTickets]);
+    setState(allSortedTickets);
+  }, [allSortedTickets]);
 
   return (
     <Grid container component="ul" spacing={2}>

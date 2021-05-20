@@ -7,6 +7,11 @@ import { useDispatch } from 'react-redux';
 import { updateSortedTickets } from '../../redux/sorting/sorting-actions';
 import { getFilteredTickets } from '../../redux/tickets/tickets-selectors';
 import { useSelector } from 'react-redux';
+import {
+  sortFastestTickets,
+  sortCheapestTickets,
+  sortOptimalTickets,
+} from './sortingMethods';
 
 const useStyles = makeStyles(theme => ({
   group: {
@@ -21,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 const SortingBar = () => {
   const classes = useStyles();
   const initialSortingState = Object.keys(sortingOptions).reduce(
-    (state, value) => (state = { ...state, [value]: false }),
+    (state, value) => (state = { ...state, [value]: false, fastest: true }),
     {},
   );
   const [state, setState] = useState(initialSortingState);
@@ -31,25 +36,23 @@ const SortingBar = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const currentSortingOption = Object.keys(state).find(key => state[key]);
-    console.log('currentSortingOption', currentSortingOption);
 
     switch (currentSortingOption) {
       case 'fastest':
-        const fastestTickets = filteredTickets
-          .slice()
-          .sort((a, b) => b.price - a.price);
+        const fastestTickets = sortFastestTickets(filteredTickets);
         dispatch(updateSortedTickets(fastestTickets));
         break;
       case 'cheapest':
-        const cheapestTickets = filteredTickets
-          .slice()
-          .sort((a, b) => a.price - b.price);
+        const cheapestTickets = sortCheapestTickets(filteredTickets);
         dispatch(updateSortedTickets(cheapestTickets));
         break;
       case 'optimal':
+        const optimalTickets = sortOptimalTickets(filteredTickets);
+        dispatch(updateSortedTickets(optimalTickets));
         break;
 
       default:
+        dispatch(updateSortedTickets(filteredTickets));
         break;
     }
   }, [dispatch, filteredTickets, state]);
@@ -57,6 +60,7 @@ const SortingBar = () => {
   const handleClick = option => {
     setState({
       ...initialSortingState,
+      fastest: false,
       [option]: true,
     });
   };
