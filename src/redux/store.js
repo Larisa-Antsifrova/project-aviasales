@@ -11,7 +11,7 @@ const store = configureStore({
   reducer: {
     tickets: ticketsReducer,
     filters: filtersReducer,
-    sorting: sortingReducer,
+    sorted: sortingReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });

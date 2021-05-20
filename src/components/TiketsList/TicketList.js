@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import TicketItem from '../TicketItem';
 import { v4 as uuidv4 } from 'uuid';
+
+import { getSortedTickets } from '../../redux/sorting/sorting-selectors';
+
 import { useSelector } from 'react-redux';
-import { getFilteredTickets } from '../../redux/tickets/tickets-selectors';
 
 const TicketsList = () => {
-  const fiveItems = useSelector(getFilteredTickets).slice(0, 5);
+  const allFilteredTickets = useSelector(getSortedTickets);
+
+  const [state, setState] = useState([]);
+
+  useEffect(() => {
+    setState(allFilteredTickets);
+  }, [allFilteredTickets]);
 
   return (
     <Grid container component="ul" spacing={2}>
-      {fiveItems.map(ticket => {
+      {state.slice(0, 5).map(ticket => {
         return <TicketItem key={uuidv4()} ticket={ticket} />;
       })}
     </Grid>

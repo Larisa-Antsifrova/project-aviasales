@@ -1,3 +1,3 @@
-const getSorting = state => state.sorting;
+const getSortedTickets = state => state.sorted;
 
-export { getSorting };
+export { getSortedTickets };

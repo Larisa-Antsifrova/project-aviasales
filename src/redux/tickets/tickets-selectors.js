@@ -8,7 +8,7 @@ const getAllTickets = state => state.tickets.allTickets;
 
 const getTicketsLoading = state => state.tickets.ticketsLoading;
 
-// Selector to get filted tickets
+// Selector to get filtered tickets
 const getFilteredTickets = createSelector(
   [getAllTickets, getAllFilters],
   (tickets, filters) => {
