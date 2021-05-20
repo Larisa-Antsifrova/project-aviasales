@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -25,7 +25,7 @@ const CustomCheckbox = withStyles({
 
 const Filter = () => {
   const optionsState = useSelector(getAllFilters);
-  const [state, setState] = React.useState(optionsState);
+  const [state, setState] = useState(optionsState);
 
   const dispatch = useDispatch();
   useEffect(() => {
