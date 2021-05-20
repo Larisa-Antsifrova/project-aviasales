@@ -2,6 +2,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './theme';
 
 // Imports from Redux
 import { Provider } from 'react-redux';
@@ -17,7 +19,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

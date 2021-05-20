@@ -7,6 +7,10 @@ const useStyles = makeStyles(theme => ({
   button: {
     padding: theme.spacing(2),
     width: '100%',
+    backgroundColor: '#2196F3',
+    '&:hover': {
+      backgroundColor: '#2196F3',
+    },
   },
   box: {
     paddingTop: theme.spacing(2),

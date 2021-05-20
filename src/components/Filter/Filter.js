@@ -7,7 +7,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilters } from '../../redux/filters/filters-actions';
-
 import filterOptions from './filterOptions';
 import { getAllFilters } from '../../redux/filters/filters-selectors';
 
@@ -41,6 +40,7 @@ const Filter = () => {
   return (
     <Paper elevation={3} className={classes.paper}>
       <Typography>КОЛИЧЕСТВО ПЕРЕСАДОК</Typography>
+
       <FormGroup>
         {Object.keys(filterOptions).map(optionKey => {
           return (

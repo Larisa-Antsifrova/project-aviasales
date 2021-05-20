@@ -20,6 +20,25 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     width: '100%',
+    padding: theme.spacing(2),
+    border: '2px solid #DFE5EC',
+    color: '#4A4A4A',
+    backgroundColor: '#ffffff',
+    '&:hover': {
+      border: '2px solid #DFE5EC',
+      color: '#4A4A4A',
+      backgroundColor: '#ffffff',
+    },
+  },
+  activeButton: {
+    border: 'transparent',
+    color: '#ffffff',
+    backgroundColor: '#2196F3',
+    '&:hover': {
+      border: 'transparent',
+      color: '#ffffff',
+      backgroundColor: '#2196F3',
+    },
   },
 }));
 
@@ -75,7 +94,11 @@ const SortingBar = () => {
         return (
           <Button
             key={option}
-            className={classes.button}
+            className={
+              state[option]
+                ? `${classes.activeButton} ${classes.button}`
+                : classes.button
+            }
             onClick={() => handleClick(option)}
           >
             {sortingOptions[option]}

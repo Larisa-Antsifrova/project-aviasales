@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MuiContainer from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -16,6 +17,10 @@ const Container = ({ children }) => {
       {children}
     </MuiContainer>
   );
+};
+
+Container.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Container;
