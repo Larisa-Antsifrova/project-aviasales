@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Imports from Redux
 import { Provider } from 'react-redux';
-// import { store, persistor } from './redux/store';
+import { store } from './redux/store';
 
 // Components imports
 import App from './App';
@@ -16,9 +16,9 @@ import './index.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <Provider store={store}> */}
-      <App />
-      {/* </Provider> */}
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

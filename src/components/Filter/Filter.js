@@ -22,10 +22,9 @@ const CustomCheckbox = withStyles({
 
 const Filter = () => {
   const optionsState = Object.keys(filterOptions).reduce(
-    (state, value) => (state = { ...state, [value]: false }),
+    (state, value) => (state = { ...state, [value]: value === 'all' }),
     {},
   );
-
   const [state, setState] = React.useState(optionsState);
   const classes = useStyles();
 

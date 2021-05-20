@@ -8,24 +8,22 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <>
-      <Suspense fallback="Loading...">
-        <Header />
-        <main>
-          <Switch>
-            <Route exact path={'/'}>
-              <HomePage />
-            </Route>
-            <Route exact path={'/ticket-info'}>
-              <TicketsPage />
-            </Route>
-            <Route>
-              <NotFoundPage />
-            </Route>
-          </Switch>
-        </main>
-      </Suspense>
-    </>
+    <Suspense fallback="Loading...">
+      <Header />
+      <main>
+        <Switch>
+          <Route exact path={'/'}>
+            <HomePage />
+          </Route>
+          <Route exact path={'/ticket-info'}>
+            <TicketsPage />
+          </Route>
+          <Route>
+            <NotFoundPage />
+          </Route>
+        </Switch>
+      </main>
+    </Suspense>
   );
 }
 
