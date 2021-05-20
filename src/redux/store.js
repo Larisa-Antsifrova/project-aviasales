@@ -4,12 +4,14 @@ import { configureStore } from '@reduxjs/toolkit';
 // Imports of reducers
 import { ticketsReducer } from './tickets/tickets-reducers';
 import { filtersReducer } from './filters/filters-reducers';
+import { sortingReducer } from './sorting/sorting-reducers';
 
 // Creating and configuring application store
 const store = configureStore({
   reducer: {
     tickets: ticketsReducer,
     filters: filtersReducer,
+    sorting: sortingReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });

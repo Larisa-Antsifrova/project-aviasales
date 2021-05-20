@@ -8,8 +8,7 @@ const initialFilterOptions = Object.keys(filterOptions).reduce(
 );
 
 const filters = createReducer(initialFilterOptions, {
-  // [updateFilters]: (state, { payload }) => ({ ...state, ...payload }),
-  [updateFilters]: (state, { payload }) => payload,
+  [updateFilters]: (_, { payload }) => payload,
 });
 
 export const filtersReducer = filters;
