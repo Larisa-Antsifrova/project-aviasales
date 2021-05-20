@@ -1,8 +1,14 @@
+import TicketsPage from './views/TicketsPage';
+import Header from './components/Header';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Aviasales</h1>
-    </div>
+    <>
+      <Header />
+      <main>
+        <TicketsPage />
+      </main>
+    </>
   );
 }
 
