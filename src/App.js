@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Suspense } from 'react';
 import TicketsPage from './views/TicketsPage';
 import HomePage from './views/HomePage';
+import NotFoundPage from './views/NotFoundPage';
 import Header from './components/Header';
 
 function App() {
@@ -15,8 +16,11 @@ function App() {
             <Route exact path={'/'}>
               <HomePage />
             </Route>
-            <Route path={'/ticket-info'}>
+            <Route exact path={'/ticket-info'}>
               <TicketsPage />
+            </Route>
+            <Route>
+              <NotFoundPage />
             </Route>
           </Switch>
         </main>
