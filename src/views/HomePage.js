@@ -1,6 +1,7 @@
 import React from 'react';
-import Container from '../components/Container';
 import Grid from '@material-ui/core/Grid';
+import Container from '../components/Container';
+import Filter from '../components/Filter';
 
 export default function TicketsPage() {
   return (
@@ -8,6 +9,7 @@ export default function TicketsPage() {
       <Grid container>
         <Grid item xs={12} md={4}>
           <h2>Filter</h2>
+          <Filter />
         </Grid>
         <Grid item xs={12} md={8}>
           <h2>List</h2>
