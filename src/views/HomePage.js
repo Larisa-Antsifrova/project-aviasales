@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '../components/Container';
 import Filter from '../components/Filter';
+import SortingBar from '../components/SortingBar';
 
 export default function TicketsPage() {
   return (
@@ -13,6 +14,7 @@ export default function TicketsPage() {
         </Grid>
         <Grid item xs={12} md={8}>
           <h2>List</h2>
+          <SortingBar />
         </Grid>
       </Grid>
     </Container>
