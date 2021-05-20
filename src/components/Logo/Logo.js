@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
+import { NavLink } from 'react-router-dom';
 import logoImage from './logo.png';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -17,9 +17,9 @@ const Logo = () => {
   const classes = useStyles();
 
   return (
-    <Link href="#">
+    <NavLink exact to={'/'}>
       <img src={logoImage} alt="Company avatar" className={classes.logoImage} />
-    </Link>
+    </NavLink>
   );
 };
 
