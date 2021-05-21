@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Suspense } from 'react';
 import TicketsPage from './views/TicketsPage';
 import HomePage from './views/HomePage';
 import NotFoundPage from './views/NotFoundPage';

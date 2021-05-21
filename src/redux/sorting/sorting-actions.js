@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const updateSorting = createAction('sorting/updateSorting');
+const updateSortedTickets = createAction('sorting/updateSortedTickets');
 
-export { updateSorting };
+export { updateSortedTickets };

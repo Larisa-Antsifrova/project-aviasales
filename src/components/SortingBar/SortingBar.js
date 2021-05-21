@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import sortingOptions from './sortingOptions';
+import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateSorting } from '../../redux/sorting/sorting-actions';
-import { getSorting } from '../../redux/sorting/sorting-selectors';
+import { updateBatch } from '../../redux/batch/batch-actions';
+import { updateSortedTickets } from '../../redux/sorting/sorting-actions';
+import { getFilteredTickets } from '../../redux/tickets/tickets-selectors';
+import sortingOptions from './sortingOptions';
+import {
+  sortFastestTickets,
+  sortCheapestTickets,
+  sortOptimalTickets,
+} from './sortingMethods';
 
 const useStyles = makeStyles(theme => ({
   group: {
@@ -14,27 +21,68 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     width: '100%',
+    padding: theme.spacing(2),
+    border: '2px solid #DFE5EC',
+    color: '#4A4A4A',
+    backgroundColor: '#ffffff',
+    '&:hover': {
+      border: '2px solid #DFE5EC',
+      color: '#4A4A4A',
+      backgroundColor: '#ffffff',
+    },
+  },
+  activeButton: {
+    border: 'transparent',
+    color: '#ffffff',
+    backgroundColor: '#2196F3',
+    '&:hover': {
+      border: 'transparent',
+      color: '#ffffff',
+      backgroundColor: '#2196F3',
+    },
   },
 }));
 
 const SortingBar = () => {
   const classes = useStyles();
-  const sortingState = useSelector(getSorting);
-  const [state, setState] = useState(sortingState);
+  const initialSortingState = Object.keys(sortingOptions).reduce(
+    (state, value) => (state = { ...state, [value]: false, fastest: true }),
+    {},
+  );
+  const [state, setState] = useState(initialSortingState);
+
+  const filteredTickets = useSelector(getFilteredTickets);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(updateSorting(state));
-  }, [dispatch, state]);
+    const currentSortingOption = Object.keys(state).find(key => state[key]);
+
+    switch (currentSortingOption) {
+      case 'fastest':
+        const fastestTickets = sortFastestTickets(filteredTickets);
+        dispatch(updateSortedTickets(fastestTickets));
+
+        break;
+      case 'cheapest':
+        const cheapestTickets = sortCheapestTickets(filteredTickets);
+        dispatch(updateSortedTickets(cheapestTickets));
+        break;
+      case 'optimal':
+        const optimalTickets = sortOptimalTickets(filteredTickets);
+        dispatch(updateSortedTickets(optimalTickets));
+        break;
+
+      default:
+        dispatch(updateSortedTickets(filteredTickets));
+        break;
+    }
+    dispatch(updateBatch(0));
+  }, [dispatch, filteredTickets, state]);
 
   const handleClick = option => {
-    const resetState = Object.keys(state).reduce(
-      (state, key) => (state = { ...state, [key]: false }),
-      {},
-    );
-
     setState({
-      ...resetState,
+      ...initialSortingState,
+      fastest: false,
       [option]: true,
     });
   };
@@ -49,10 +97,16 @@ const SortingBar = () => {
         return (
           <Button
             key={option}
-            className={classes.button}
+            className={
+              state[option]
+                ? `${classes.activeButton} ${classes.button}`
+                : classes.button
+            }
             onClick={() => handleClick(option)}
           >
-            {sortingOptions[option]}
+            <Box component="span" fontWeight={600}>
+              {sortingOptions[option]}
+            </Box>
           </Button>
         );
       })}

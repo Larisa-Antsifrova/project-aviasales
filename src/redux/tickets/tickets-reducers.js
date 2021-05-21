@@ -1,9 +1,5 @@
-// Redux imports
 import { combineReducers } from 'redux';
-
-// Imports from Redux Toolkit
 import { createReducer } from '@reduxjs/toolkit';
-
 import {
   fetchTicketsRequest,
   fetchTicketsSuccess,

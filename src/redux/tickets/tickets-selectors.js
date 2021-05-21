@@ -1,14 +1,14 @@
 // Imports from Redux Toolkit
+import _ from 'lodash';
 import { createSelector } from '@reduxjs/toolkit';
 import { getAllFilters } from '../filters/filters-selectors';
-import _ from 'lodash';
 
-// Selector to get all tickets
 const getAllTickets = state => state.tickets.allTickets;
 
 const getTicketsLoading = state => state.tickets.ticketsLoading;
 
-// Selector to get filted tickets
+const getError = state => state.tickets.error;
+
 const getFilteredTickets = createSelector(
   [getAllTickets, getAllFilters],
   (tickets, filters) => {
@@ -56,4 +56,4 @@ const getFilteredTickets = createSelector(
   },
 );
 
-export { getAllTickets, getTicketsLoading, getFilteredTickets };
+export { getAllTickets, getTicketsLoading, getError, getFilteredTickets };
