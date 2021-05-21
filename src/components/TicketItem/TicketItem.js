@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -26,8 +27,21 @@ const useStyles = makeStyles(theme => ({
 const TicketItem = ({ ticket }) => {
   const classes = useStyles();
 
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/ticket-info');
+  };
+
   return (
-    <Grid item xs={12} component="li">
+    <Grid
+      item
+      xs={12}
+      component="li"
+      onClick={() => {
+        handleClick();
+      }}
+    >
       <Paper className={classes.paper}>
         <Box className={classes.box}>
           <p>{`${ticket.price} P`}</p>
