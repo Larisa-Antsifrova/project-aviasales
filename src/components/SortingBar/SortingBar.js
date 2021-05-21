@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Box from '@material-ui/core/Box';
 import sortingOptions from './sortingOptions';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
@@ -104,7 +105,9 @@ const SortingBar = () => {
             }
             onClick={() => handleClick(option)}
           >
-            {sortingOptions[option]}
+            <Box component="span" fontWeight={600}>
+              {sortingOptions[option]}
+            </Box>
           </Button>
         );
       })}

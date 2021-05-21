@@ -47,7 +47,9 @@ const LoadMoreButton = () => {
             className={classes.button}
             onClick={() => dispatch(updateBatch(1))}
           >
-            ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ!
+            <Box component="span" fontWeight={600}>
+              ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ!
+            </Box>
           </Button>
         </Box>
       )}

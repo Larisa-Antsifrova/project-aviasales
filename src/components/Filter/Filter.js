@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(3),
   },
+  text: {
+    marginBottom: '20px',
+  },
 }));
 
 const CustomCheckbox = withStyles({
@@ -39,7 +42,9 @@ const Filter = () => {
 
   return (
     <Paper elevation={3} className={classes.paper}>
-      <Typography>КОЛИЧЕСТВО ПЕРЕСАДОК</Typography>
+      <Typography gutterBottom variant="h6">
+        КОЛИЧЕСТВО ПЕРЕСАДОК
+      </Typography>
 
       <FormGroup>
         {Object.keys(filterOptions).map(optionKey => {
