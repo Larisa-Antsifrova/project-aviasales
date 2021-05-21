@@ -8,6 +8,8 @@ const getAllTickets = state => state.tickets.allTickets;
 
 const getTicketsLoading = state => state.tickets.ticketsLoading;
 
+const getError = state => state.tickets.error;
+
 // Selector to get filtered tickets
 const getFilteredTickets = createSelector(
   [getAllTickets, getAllFilters],
@@ -56,4 +58,4 @@ const getFilteredTickets = createSelector(
   },
 );
 
-export { getAllTickets, getTicketsLoading, getFilteredTickets };
+export { getAllTickets, getTicketsLoading, getError, getFilteredTickets };

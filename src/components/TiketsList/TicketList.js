@@ -3,13 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import { v4 as uuidv4 } from 'uuid';
 import { getSortedTickets } from '../../redux/sorting/sorting-selectors';
 import { getBatch } from '../../redux/batch/batch-selectors';
+import { getError } from '../../redux/tickets/tickets-selectors';
 import TicketItem from '../TicketItem';
+import ErrorMessage from '../ErrorMessage';
 
 import { useSelector } from 'react-redux';
 
 const TicketsList = () => {
   const allSortedTickets = useSelector(getSortedTickets);
   const currentBatch = useSelector(getBatch);
+  const error = useSelector(getError);
 
   const [state, setState] = useState([]);
   const [renderable, setRenderable] = useState([]);
@@ -32,9 +35,11 @@ const TicketsList = () => {
 
   return (
     <Grid container component="ul" spacing={2}>
-      {renderable.map(ticket => {
-        return <TicketItem key={uuidv4()} ticket={ticket} />;
-      })}
+      {error && <ErrorMessage />}
+      {!error &&
+        renderable.map(ticket => {
+          return <TicketItem key={uuidv4()} ticket={ticket} />;
+        })}
     </Grid>
   );
 };
