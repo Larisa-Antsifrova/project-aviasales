@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { v4 as uuidv4 } from 'uuid';
 import { getSortedTickets } from '../../redux/sorting/sorting-selectors';
 import { getBatch } from '../../redux/batch/batch-selectors';
-import { getError } from '../../redux/tickets/tickets-selectors';
+import {
+  getError,
+  getTicketsLoading,
+} from '../../redux/tickets/tickets-selectors';
 import TicketItem from '../TicketItem';
 import ErrorMessage from '../ErrorMessage';
-
 import { useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles(theme => ({
+  spinner: {
+    margin: '40px auto',
+    color: '#2196F3',
+  },
+}));
 
 const TicketsList = () => {
+  const classes = useStyles();
   const allSortedTickets = useSelector(getSortedTickets);
   const currentBatch = useSelector(getBatch);
   const error = useSelector(getError);
+  const loading = useSelector(getTicketsLoading);
 
   const [state, setState] = useState([]);
   const [renderable, setRenderable] = useState([]);
@@ -35,8 +47,10 @@ const TicketsList = () => {
 
   return (
     <Grid container component="ul" spacing={2}>
-      {error && <ErrorMessage />}
+      {loading && <CircularProgress className={classes.spinner} />}
+      {error && !loading && <ErrorMessage />}
       {!error &&
+        !loading &&
         renderable.map(ticket => {
           return <TicketItem key={uuidv4()} ticket={ticket} />;
         })}
