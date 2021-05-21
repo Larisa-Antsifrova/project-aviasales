@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateBatch } from '../../redux/batch/batch-actions';
 import Button from '@material-ui/core/Button';
@@ -21,12 +21,8 @@ const useStyles = makeStyles(theme => ({
 
 const LoadMoreButton = () => {
   const classes = useStyles();
-  // const [state, setState] = useState(1);
 
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(updateBatch(state));
-  // }, [dispatch, state]);
 
   return (
     <Box className={classes.box}>

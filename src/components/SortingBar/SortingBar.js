@@ -4,6 +4,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import sortingOptions from './sortingOptions';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
+import { updateBatch } from '../../redux/batch/batch-actions';
 import { updateSortedTickets } from '../../redux/sorting/sorting-actions';
 import { getFilteredTickets } from '../../redux/tickets/tickets-selectors';
 import { useSelector } from 'react-redux';
@@ -60,6 +61,7 @@ const SortingBar = () => {
       case 'fastest':
         const fastestTickets = sortFastestTickets(filteredTickets);
         dispatch(updateSortedTickets(fastestTickets));
+
         break;
       case 'cheapest':
         const cheapestTickets = sortCheapestTickets(filteredTickets);
@@ -74,6 +76,7 @@ const SortingBar = () => {
         dispatch(updateSortedTickets(filteredTickets));
         break;
     }
+    dispatch(updateBatch(0));
   }, [dispatch, filteredTickets, state]);
 
   const handleClick = option => {
