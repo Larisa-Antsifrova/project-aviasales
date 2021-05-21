@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateFilters } from '../../redux/filters/filters-actions';
 import filterOptions from './filterOptions';
+import { updateFilters } from '../../redux/filters/filters-actions';
 import { getAllFilters } from '../../redux/filters/filters-selectors';
 
 const useStyles = makeStyles(theme => ({

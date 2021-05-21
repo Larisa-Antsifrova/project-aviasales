@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { v4 as uuidv4 } from 'uuid';
+import { makeStyles } from '@material-ui/core/styles';
 import { getSortedTickets } from '../../redux/sorting/sorting-selectors';
 import { getBatch } from '../../redux/batch/batch-selectors';
 import {
@@ -10,8 +12,7 @@ import {
 } from '../../redux/tickets/tickets-selectors';
 import TicketItem from '../TicketItem';
 import ErrorMessage from '../ErrorMessage';
-import { useSelector } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
+
 const useStyles = makeStyles(theme => ({
   spinner: {
     margin: '40px auto',

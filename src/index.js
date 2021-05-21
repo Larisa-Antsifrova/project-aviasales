@@ -1,18 +1,12 @@
 // React imports
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './theme';
-
-// Imports from Redux
-import { Provider } from 'react-redux';
 import { store } from './redux/store';
-
-// Components imports
+import theme from './theme';
 import App from './App';
-
-// Styles imports
 import './index.css';
 
 ReactDOM.render(

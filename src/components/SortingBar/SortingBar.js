@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
-import sortingOptions from './sortingOptions';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
 import { updateBatch } from '../../redux/batch/batch-actions';
 import { updateSortedTickets } from '../../redux/sorting/sorting-actions';
 import { getFilteredTickets } from '../../redux/tickets/tickets-selectors';
-import { useSelector } from 'react-redux';
+import sortingOptions from './sortingOptions';
 import {
   sortFastestTickets,
   sortCheapestTickets,

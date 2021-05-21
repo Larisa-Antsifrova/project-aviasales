@@ -2,7 +2,6 @@ import React from 'react';
 import Container from '../Container';
 import Navigation from '../Navigation';
 import Logo from '../Logo';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({

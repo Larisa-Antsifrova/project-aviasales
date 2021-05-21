@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logoImage from './logo.svg';
 import { makeStyles } from '@material-ui/core/styles';
+import logoImage from './logo.svg';
 
 const useStyles = makeStyles(theme => ({
   logoImage: {
